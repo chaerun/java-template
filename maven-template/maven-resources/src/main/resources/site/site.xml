@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd"
+	combine.self="override">
+	
+	<bannerLeft>
+		<name>Logo</name>
+		<src>/images/logo.png</src>
+	</bannerLeft>
+	<bannerRight>
+		<name>${project.name}</name>
+		<href>index.html</href>
+	</bannerRight>
+
+	<publishDate position="right" />
+	<version position="right" />
+
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>${maven-fluido-skin.version}</version>
+	</skin>
+
+	<body>
+		<breadcrumbs>
+			<item name="Home" href="index.html" />
+		</breadcrumbs>
+		<menu name="Main" inherit="top">
+			<item name="Getting Started" href="getting-started.html" />
+			<item name="Maven Commands" href="maven-commands.html" />
+		</menu>
+		<menu name="Project Parent" ref="parent" inherit="top" />
+		<menu name="Project Modules" ref="modules" inherit="top" />
+		<menu name="Project Documentation" ref="reports" inherit="top" />
+		<footer>
+			<![CDATA[
+				<div class="pull-right">Copyright ©${current.year} <a href="${project.organization.url}">${project.organization.name}</a>. All rights reserved.</div>
+			]]>
+		</footer>
+	</body>
+</project>
