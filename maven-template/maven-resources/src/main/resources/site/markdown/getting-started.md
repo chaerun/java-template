@@ -33,10 +33,10 @@
 - Download [Eclipse JEE IDE](https://www.eclipse.org/downloads/packages).
 
 #### Setup Lombok
-1. Download [lombok.jar](https://projectlombok.org/download).
-2. Double click the jar, the installer window should appear.
-3. Click **Specify location...**, then browse your **eclipse.exe** file.
-4. Click **Install / Update**, it will install the library to your Eclipse IDE.
-5. Click **Quit Installer**.
+1. Open **Eclipse JEE** or **STS**.
+2. Go to **Help** -> **Install New Software...**.
+3. Add Lombok update site in **Work with:** `https://projectlombok.org/p2`
+4. Select **Lombok**, install then accept the certificate confirmation.
+5. Restart your IDE.
 
 For more information about lombok setup, visit https://projectlombok.org/setup/eclipse.

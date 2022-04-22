@@ -6,58 +6,65 @@
 	<!-- The Basics -->
 	<groupId>com.chaerun.template</groupId>
 	<artifactId>maven-template</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>maven-resources</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 		<current.year>${maven.build.timestamp}</current.year>
 
 		<!-- Shared resources -->
-		<maven-resources.version>1.0.0</maven-resources.version> <!-- Update this when updating maven-template version -->
+		<maven-resources.version>${project.version}</maven-resources.version> <!-- Update this when updating maven-resources version -->
 		<maven-resources.directory>${project.build.directory}/template</maven-resources.directory>
 
 		<!-- Maven plugins -->
+		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
+		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+		<maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>3.0.0-M2</maven-deploy-plugin.version>
+		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
+		<maven-release-plugin.version>3.0.0-M5</maven-release-plugin.version>
 		<maven-remote-resources-plugin.version>1.7.0</maven-remote-resources-plugin.version>
-		<maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
-		<maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+		<maven-site-plugin.version>3.11.0</maven-site-plugin.version>
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
-		<doxia.version>1.9.1</doxia.version>
-		<maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
-		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
-		<maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
+		<doxia.version>1.11.1</doxia.version>
+		<maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
+		<maven-javadoc-plugin.version>3.3.2</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
 
 		<!-- Versions maven plugin -->
-		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.9.0</versions-maven-plugin.version>
 		<versions-maven-plugin.rulesUri>classpath:///maven-version-rules.xml</versions-maven-plugin.rulesUri>
 
 		<!-- Checkstyle -->
-		<checkstyle.version>8.32</checkstyle.version>
+		<checkstyle.version>10.1</checkstyle.version>
 		<checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
 		<checkstyle.violationSeverity>warning</checkstyle.violationSeverity>
 		<checkstyle.enable.rules.summary>false</checkstyle.enable.rules.summary>
 
 		<!-- Code Coverage -->
-		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
 		<jacoco.maxComplexity>15</jacoco.maxComplexity>
 		<jacoco.minCoveredRatio>0.90</jacoco.minCoveredRatio>
 
-		<lombok.version>1.18.12</lombok.version>
+		<lombok.version>1.18.24</lombok.version>
 
 		<!-- Logging -->
-		<log4j2.version>2.17.1</log4j2.version>
-		<slf4j.version>1.7.30</slf4j.version>
+		<log4j2.version>2.17.2</log4j2.version>
+		<slf4j.version>1.7.25</slf4j.version>
 
 		<!-- Test -->
-		<junit-jupiter.version>5.6.2</junit-jupiter.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<hamcrest.version>2.2</hamcrest.version>
 	</properties>
 	<dependencyManagement>
@@ -165,6 +172,43 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<!-- Default plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-antrun-plugin</artifactId>
+          			<version>${maven-antrun-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-assembly-plugin</artifactId>
+          			<version>${maven-assembly-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-clean-plugin</artifactId>
+          			<version>${maven-clean-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-dependency-plugin</artifactId>
+          			<version>${maven-dependency-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-deploy-plugin</artifactId>
+          			<version>${maven-deploy-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-install-plugin</artifactId>
+          			<version>${maven-install-plugin.version}</version>
+        		</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-release-plugin</artifactId>
+          			<version>${maven-release-plugin.version}</version>
+        		</plugin>
+        		
 				<!-- Shared-resources plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
