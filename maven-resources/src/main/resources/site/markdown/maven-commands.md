@@ -39,7 +39,7 @@ To get information about newer versions of dependencies that you are using in yo
 mvn versions:display-dependency-updates
 ```
 
-#### Checking for new versions of dependencies
+#### Checking for new versions of properties
 To get information about newer versions of dependencies that you are using in your build, just invoke the **display-property-updates** goal.
 ```bash
 mvn versions:display-property-updates

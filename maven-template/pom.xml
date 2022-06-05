@@ -8,9 +8,6 @@
 	<artifactId>maven-template</artifactId>
 	<version>1.1.0</version>
 	<packaging>pom</packaging>
-	<modules>
-		<module>maven-resources</module>
-	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
@@ -20,40 +17,41 @@
 		<current.year>${maven.build.timestamp}</current.year>
 
 		<!-- Shared resources -->
-		<maven-resources.version>${project.version}</maven-resources.version> <!-- Update this when updating maven-resources version -->
+		<maven-resources.version>1.1.0</maven-resources.version> <!-- Update this when updating maven-resources version -->
 		<maven-resources.directory>${project.build.directory}/template</maven-resources.directory>
 
 		<!-- Maven plugins -->
-		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
+		<maven.version>3.2.5</maven.version>
+		<maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
+		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-		<maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
+		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+		<maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>3.0.0-M2</maven-deploy-plugin.version>
 		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
 		<maven-release-plugin.version>3.0.0-M5</maven-release-plugin.version>
 		<maven-remote-resources-plugin.version>1.7.0</maven-remote-resources-plugin.version>
 		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-		<maven-site-plugin.version>3.11.0</maven-site-plugin.version>
-		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
-		<doxia.version>1.11.1</doxia.version>
-		<maven-project-info-reports-plugin.version>3.2.2</maven-project-info-reports-plugin.version>
-		<maven-javadoc-plugin.version>3.3.2</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-		<maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
+		<maven-site-plugin.version>4.0.0-M1</maven-site-plugin.version>
+		<maven-fluido-skin.version>1.11.0</maven-fluido-skin.version>
+		<maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.2.0</maven-jxr-plugin.version>
+		<maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>3.0.0-M6</maven-surefire-report-plugin.version>
 
 		<!-- Versions maven plugin -->
-		<versions-maven-plugin.version>2.9.0</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.11.0</versions-maven-plugin.version>
 		<versions-maven-plugin.rulesUri>classpath:///maven-version-rules.xml</versions-maven-plugin.rulesUri>
 
 		<!-- Checkstyle -->
-		<checkstyle.version>10.1</checkstyle.version>
-		<checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
+		<checkstyle.version>10.3</checkstyle.version>
+		<checkstyle.config.location>google_checks.xml</checkstyle.config.location> <!-- Predefined checks: sun_checks.xml or google_checks.xml -->
 		<checkstyle.violationSeverity>warning</checkstyle.violationSeverity>
 		<checkstyle.enable.rules.summary>false</checkstyle.enable.rules.summary>
 
 		<!-- Code Coverage -->
-		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<jacoco.maxComplexity>15</jacoco.maxComplexity>
 		<jacoco.minCoveredRatio>0.90</jacoco.minCoveredRatio>
 
@@ -61,7 +59,7 @@
 
 		<!-- Logging -->
 		<log4j2.version>2.17.2</log4j2.version>
-		<slf4j.version>1.7.25</slf4j.version>
+		<slf4j.version>1.7.36</slf4j.version>
 
 		<!-- Test -->
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
@@ -175,40 +173,47 @@
 				<!-- Default plugins -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-antrun-plugin</artifactId>
-          			<version>${maven-antrun-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-assembly-plugin</artifactId>
-          			<version>${maven-assembly-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-clean-plugin</artifactId>
-          			<version>${maven-clean-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-dependency-plugin</artifactId>
-          			<version>${maven-dependency-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-deploy-plugin</artifactId>
-          			<version>${maven-deploy-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-install-plugin</artifactId>
-          			<version>${maven-install-plugin.version}</version>
-        		</plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-          			<artifactId>maven-release-plugin</artifactId>
-          			<version>${maven-release-plugin.version}</version>
-        		</plugin>
-        		
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin.version}</version>
+				</plugin>
+				
+				<!-- Maven enforcer plugin -->
+				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+
 				<!-- Shared-resources plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -250,18 +255,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven-site-plugin.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.maven.doxia</groupId>
-							<artifactId>doxia-site-renderer</artifactId>
-							<version>${doxia.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.apache.maven.doxia</groupId>
-							<artifactId>doxia-module-markdown</artifactId>
-							<version>${doxia.version}</version>
-						</dependency>
-					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -297,6 +290,27 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+		    <!-- Enforce to use specific version of maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>${maven.version}</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- Get shared-resources from maven-resources -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
